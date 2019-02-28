@@ -25,16 +25,59 @@ string numbers_lt_20_to_string(int number){
 	case 17:answer = "Семьнадцать";break;
 	case 18:answer = "Восемьнадцать";break;
 	case 19:answer = "Девятьнадцать";break;
-	case 20:answer = "Дватцать";break;
-	case 30:answer = "Тридцать";break;
-	case 40:answer = "Сорок";break;
-	case 50:answer = "Пятьдесять";break;
-	case 60:answer = "Шестьдесять";break;
-	case 70:answer = "Семьдесять";break;
-	case 80:answer = "Восемьдесять";break;
-	case 90:answer = "Девяноста";break;
-	case 100:answer = "Сто";break;
 	default: break;
 	}
 	return answer;	
 }
+string numbers_lt_100_to_string(int number){
+	string answer;
+	int tens = number / 10;
+	int remainder = number % 10;
+	/*if (number < 20) answer = numbers_lt_20_to_string(number);*/
+	switch(tens){
+	case 2:answer = "Двадцать";break;
+	case 3:answer = "Тридцать";break;
+	case 4:answer = "Сорок";break;
+	case 5:answer = "Пятьдесять";break;
+	case 6:answer = "Шестьдесять";break;
+	case 7:answer = "Семьдесять";break;
+	case 8:answer = "Восемьдесять";break;
+	case 9:answer = "Девяноста";break;
+	default:break;
+	}
+	if (remainder != 0)
+	{
+		answer +=" "+numbers_lt_20_to_string(remainder);
+	}
+	return answer;
+}
+string numbers_lt_1000_to_string(int number){
+	string answer;
+	int C = number / 100;
+	int remainder = number % 100;
+	/*if (number < 100) answer = numbers_lt_100_to_string(number);*/
+	switch(C){	
+	case 1:answer = "Сто";break;
+	case 2:answer = "Двести";break;
+	case 3:answer = "Триста";break;
+	case 4:answer = "Четыреста";break;
+	case 5:answer = "Пятсот";break;
+	case 6:answer = "Шестьсот";break;
+	case 7:answer = "Семьсот";break;
+	case 8:answer = "Восемьсот";break;
+	case 9:answer = "Девятсот";break;
+	default:break;
+	}
+	if (remainder != 0)
+	{
+	answer +=" "+numbers_lt_100_to_string(remainder);
+	}
+	return answer;
+}
+
+
+
+
+
+
+

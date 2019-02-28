@@ -5,8 +5,7 @@
 
 #include "test_Header.h"
 
-BOOST_AUTO_TEST_CASE( test_case1 )
-  {
+BOOST_AUTO_TEST_CASE( test_case1 ){
 	BOOST_TEST_CHECK(numbers_lt_20_to_string(0)==string("Ноль"));
     BOOST_TEST_CHECK(numbers_lt_20_to_string(1)==string("Один"));
 	BOOST_TEST_CHECK(numbers_lt_20_to_string(2)==string("Два"));
@@ -26,16 +25,30 @@ BOOST_AUTO_TEST_CASE( test_case1 )
 	BOOST_TEST_CHECK(numbers_lt_20_to_string(16)==string("Шестьнадцать"));
 	BOOST_TEST_CHECK(numbers_lt_20_to_string(17)==string("Семьнадцать"));
 	BOOST_TEST_CHECK(numbers_lt_20_to_string(18)==string("Восемьнадцать"));
-	BOOST_TEST_CHECK(numbers_lt_20_to_string(19)==string("Девятьнадцать"));
-	BOOST_TEST_CHECK(numbers_lt_20_to_string(20)==string("Дватцать"));
-	BOOST_TEST_CHECK(numbers_lt_20_to_string(30)==string("Тридцать"));
-	BOOST_TEST_CHECK(numbers_lt_20_to_string(40)==string("Сорок"));
-	BOOST_TEST_CHECK(numbers_lt_20_to_string(50)==string("Пятьдесять"));
-	BOOST_TEST_CHECK(numbers_lt_20_to_string(60)==string("Шестьдесять"));
-	BOOST_TEST_CHECK(numbers_lt_20_to_string(70)==string("Семьдесять"));
-	BOOST_TEST_CHECK(numbers_lt_20_to_string(80)==string("Восемьдесять"));
-	BOOST_TEST_CHECK(numbers_lt_20_to_string(90)==string("Девяноста"));
-	BOOST_TEST_CHECK(numbers_lt_20_to_string(100)==string("Сто"));
-  }
-
+	BOOST_TEST_CHECK(numbers_lt_20_to_string(19)==string("Девятьнадцать"));	
+}
+BOOST_AUTO_TEST_CASE( test_case2 ){
+	BOOST_TEST_CHECK(numbers_lt_100_to_string(20)==string("Двадцать"));
+	BOOST_TEST_CHECK(numbers_lt_100_to_string(21)==string("Двадцать Один"));
+	BOOST_TEST_CHECK(numbers_lt_100_to_string(32)==string("Тридцать Два"));
+	BOOST_TEST_CHECK(numbers_lt_100_to_string(43)==string("Сорок Три"));
+	BOOST_TEST_CHECK(numbers_lt_100_to_string(54)==string("Пятьдесять Четыре"));
+	BOOST_TEST_CHECK(numbers_lt_100_to_string(65)==string("Шестьдесять Пять"));
+	BOOST_TEST_CHECK(numbers_lt_100_to_string(79)==string("Семьдесять Девять"));
+	BOOST_TEST_CHECK(numbers_lt_100_to_string(86)==string("Восемьдесять Шесть"));
+	BOOST_TEST_CHECK(numbers_lt_100_to_string(97)==string("Девяноста Семь"));
+}
+BOOST_AUTO_TEST_CASE( test_case3 ){
+	BOOST_TEST_CHECK(numbers_lt_1000_to_string(100)==string("Сто"));
+	BOOST_TEST_CHECK(numbers_lt_1000_to_string(120)==string("Сто Двадцать"));
+	BOOST_TEST_CHECK(numbers_lt_1000_to_string(123)==string("Сто Двадцать Три"));
+	BOOST_TEST_CHECK(numbers_lt_1000_to_string(200)==string("Двести"));
+	BOOST_TEST_CHECK(numbers_lt_1000_to_string(300)==string("Триста"));
+	BOOST_TEST_CHECK(numbers_lt_1000_to_string(400)==string("Четыреста"));
+	BOOST_TEST_CHECK(numbers_lt_1000_to_string(500)==string("Пятсот"));
+	BOOST_TEST_CHECK(numbers_lt_1000_to_string(600)==string("Шестьсот"));
+	BOOST_TEST_CHECK(numbers_lt_1000_to_string(700)==string("Семьсот"));
+	BOOST_TEST_CHECK(numbers_lt_1000_to_string(800)==string("Восемьсот"));
+	BOOST_TEST_CHECK(numbers_lt_1000_to_string(900)==string("Девятсот"));
+}
 #endif
