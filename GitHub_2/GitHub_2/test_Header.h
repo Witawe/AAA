@@ -2,9 +2,12 @@
 
 using namespace std;
 
-string numbers_lt_20_to_string(int number){
+string numbers_lt_20_to_string(int number)
+{
 	string answer;
-		switch(number){
+
+		switch(number)
+		{
 			case 0:answer = "Ноль";break;
 			case 1:answer = "Один";break;
 			case 2:answer = "Два";break;
@@ -30,58 +33,65 @@ string numbers_lt_20_to_string(int number){
 	return answer;	
 }
 
-string numbers_lt_100_to_string(int number){
+string numbers_lt_100_to_string(int number)
+{
 	string answer;
 	int tens = number / 10;
-	int remainder = number % 10;	
-		switch(tens){
-			case 1:answer = "Десять";break;
-			case 2:answer = "Двадцать";break;
-			case 3:answer = "Тридцать";break;
-			case 4:answer = "Сорок";break;
-			case 5:answer = "Пятьдесять";break;
-			case 6:answer = "Шестьдесять";break;
-			case 7:answer = "Семьдесять";break;
-			case 8:answer = "Восемьдесять";break;
-			case 9:answer = "Девяноста";break;
-			default:break;
+	int remainder = number % 10;
+	if (number < 20) answer = numbers_lt_20_to_string(number);
+	else {
+		switch (tens)
+		{
+			case 2: answer = "двадцать"; break;
+			case 3: answer = "тридцать"; break;
+			case 4: answer = "сорок"; break;
+			case 5: answer = "пятьдесять"; break;
+			case 6: answer = "шестьдесять"; break;
+			case 7: answer = "семьдесять"; break;
+			case 8: answer = "восемьдесять"; break;
+			case 9: answer = "девяносто"; break;
+			default: break;
 		}
-	if (number < 20) 
-		answer = numbers_lt_20_to_string(number);
-	else if (remainder != 0)
-		answer +=" "+numbers_lt_20_to_string(remainder);
+		if (remainder!= 0) {
+			answer += " " + numbers_lt_20_to_string(remainder);
+		}
+	}
 	return answer;
 }
 
-string numbers_lt_1000_to_string(int number){
-	string answer,str="";
-	int C = number / 100;
+string numbers_lt_1000_to_string(int number)
+{
+	string answer;
+	int hundreds = number / 100;
 	int remainder = number % 100;
-		switch(C){	
-			case 1:answer = "Сто";break;
-			case 2:answer = "Двести";break;
-			case 3:answer = "Триста";break;
-			case 4:answer = "Четыреста";break;
-			case 5:answer = "Пятсот";break;
-			case 6:answer = "Шестьсот";break;
-			case 7:answer = "Семьсот";break;
-			case 8:answer = "Восемьсот";break;
-			case 9:answer = "Девятсот";break;
-			default:break;
+	if (number < 100) answer = numbers_lt_100_to_string(number);
+	else {
+		switch (hundreds)
+		{
+			case 1: answer = "сто"; break;
+			case 2: answer = "двести"; break;
+			case 3: answer = "триста"; break;
+			case 4: answer = "четыреста"; break;
+			case 5: answer = "пятьсот"; break;
+			case 6: answer = "шестьсот"; break;
+			case 7: answer = "семьсот"; break;
+			case 8: answer = "восемьсот"; break;
+			case 9: answer = "девятьсот"; break;
 		}
-	if (remainder != 0 && number>100)  
-		str+=" "+ numbers_lt_100_to_string(remainder);
-	if (number<100)
-		answer=numbers_lt_100_to_string(remainder);
-	answer+=str;
+		if (remainder!= 0) {
+			answer += " " + numbers_lt_100_to_string(remainder);
+		}
+	}
+
 	return answer;
 }
 
-string object_100_to_string(int number, string s1, string s2, string s3){
+string object_100_to_string(int number, string s1, string s2, string s3)
+{
 	string answer;
 	int remainder = number % 10;
 	answer = numbers_lt_1000_to_string(number);
-	if (number > 10 & number < 15)
+	if ((number > 10) && (number < 15))
 		answer = answer + " " + s3;
 	else
 		switch (remainder)
@@ -92,15 +102,21 @@ string object_100_to_string(int number, string s1, string s2, string s3){
 		case 4: answer += " " + s2;break;
 		default: answer += " " + s3;break;
 	}
+	return answer;
 }
 
 string currency_to_string(int integer_value, string si1, string si2, string si3, 
 						  int decimal_value, string sd1, string sd2, string sd3)
 {
-    string answer;
-	answer = object_100_to_string(integer_value, si1, si2, si3);
-	if (decimal_value)
-		answer += ", " + object_100_to_string(integer_value, si1, si2, si3);
+        string answer;
+	if (integer_value) {
+		answer = object_100_to_string(integer_value, si1, si2, si3);
+		if (decimal_value) answer = answer + ", " + object_100_to_string(decimal_value, sd1, sd2, sd3);
+	}
+	else
+	{
+		if (decimal_value) answer = object_100_to_string(decimal_value, sd1, sd2, sd3);
+	}
     return answer;
 }
 

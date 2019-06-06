@@ -106,8 +106,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AAA_Project.cpp" />
     <ClCompile Include="AAA_project_test.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test_Header.h" />
